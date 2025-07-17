@@ -8,6 +8,7 @@ const navigationItems = [
     { to: "/", icon: "BarChart3", label: "Dashboard" },
     { to: "/contacts", icon: "Users", label: "Contacts" },
     { to: "/deals", icon: "Target", label: "Deals" },
+    { to: "/lead-scoring", icon: "Award", label: "Lead Scoring" },
     { to: "/tasks", icon: "CheckSquare", label: "Tasks" },
     { to: "/emails", icon: "Mail", label: "Email Client" },
     { to: "/reports", icon: "TrendingUp", label: "Reports" },

@@ -1,0 +1,231 @@
+[
+  {
+    "Id": 1,
+    "contactId": 1,
+    "type": "email_open",
+    "timestamp": "2024-01-15T09:30:00Z",
+    "details": {
+      "emailSubject": "Product Demo Follow-up",
+      "campaignId": "camp_001"
+    },
+    "source": "email_system"
+  },
+  {
+    "Id": 2,
+    "contactId": 1,
+    "type": "website_visit",
+    "timestamp": "2024-01-15T14:20:00Z",
+    "details": {
+      "page": "/pricing",
+      "duration": 180,
+      "referrer": "email"
+    },
+    "source": "website_analytics"
+  },
+  {
+    "Id": 3,
+    "contactId": 1,
+    "type": "email_open",
+    "timestamp": "2024-01-16T10:15:00Z",
+    "details": {
+      "emailSubject": "Special Offer - 20% Off",
+      "campaignId": "camp_002"
+    },
+    "source": "email_system"
+  },
+  {
+    "Id": 4,
+    "contactId": 2,
+    "type": "form_submission",
+    "timestamp": "2024-01-14T11:45:00Z",
+    "details": {
+      "formName": "Contact Us",
+      "formFields": ["name", "email", "company", "message"]
+    },
+    "source": "website_forms"
+  },
+  {
+    "Id": 5,
+    "contactId": 2,
+    "type": "website_visit",
+    "timestamp": "2024-01-14T11:30:00Z",
+    "details": {
+      "page": "/solutions",
+      "duration": 240,
+      "referrer": "google"
+    },
+    "source": "website_analytics"
+  },
+  {
+    "Id": 6,
+    "contactId": 2,
+    "type": "email_open",
+    "timestamp": "2024-01-13T16:20:00Z",
+    "details": {
+      "emailSubject": "Welcome to Our Platform",
+      "campaignId": "camp_003"
+    },
+    "source": "email_system"
+  },
+  {
+    "Id": 7,
+    "contactId": 3,
+    "type": "website_visit",
+    "timestamp": "2024-01-13T09:15:00Z",
+    "details": {
+      "page": "/features",
+      "duration": 120,
+      "referrer": "linkedin"
+    },
+    "source": "website_analytics"
+  },
+  {
+    "Id": 8,
+    "contactId": 3,
+    "type": "email_open",
+    "timestamp": "2024-01-12T15:30:00Z",
+    "details": {
+      "emailSubject": "Case Study: How We Helped TechCorp",
+      "campaignId": "camp_004"
+    },
+    "source": "email_system"
+  },
+  {
+    "Id": 9,
+    "contactId": 4,
+    "type": "form_submission",
+    "timestamp": "2024-01-12T10:45:00Z",
+    "details": {
+      "formName": "Demo Request",
+      "formFields": ["name", "email", "company", "phone", "message"]
+    },
+    "source": "website_forms"
+  },
+  {
+    "Id": 10,
+    "contactId": 4,
+    "type": "website_visit",
+    "timestamp": "2024-01-12T10:30:00Z",
+    "details": {
+      "page": "/demo",
+      "duration": 300,
+      "referrer": "email"
+    },
+    "source": "website_analytics"
+  },
+  {
+    "Id": 11,
+    "contactId": 5,
+    "type": "email_open",
+    "timestamp": "2024-01-11T14:20:00Z",
+    "details": {
+      "emailSubject": "Product Update Newsletter",
+      "campaignId": "camp_005"
+    },
+    "source": "email_system"
+  },
+  {
+    "Id": 12,
+    "contactId": 5,
+    "type": "website_visit",
+    "timestamp": "2024-01-11T14:25:00Z",
+    "details": {
+      "page": "/blog/automation-trends",
+      "duration": 450,
+      "referrer": "email"
+    },
+    "source": "website_analytics"
+  },
+  {
+    "Id": 13,
+    "contactId": 6,
+    "type": "website_visit",
+    "timestamp": "2024-01-10T12:15:00Z",
+    "details": {
+      "page": "/",
+      "duration": 60,
+      "referrer": "google"
+    },
+    "source": "website_analytics"
+  },
+  {
+    "Id": 14,
+    "contactId": 7,
+    "type": "email_open",
+    "timestamp": "2024-01-09T09:45:00Z",
+    "details": {
+      "emailSubject": "Monthly Industry Report",
+      "campaignId": "camp_006"
+    },
+    "source": "email_system"
+  },
+  {
+    "Id": 15,
+    "contactId": 7,
+    "type": "website_visit",
+    "timestamp": "2024-01-09T09:50:00Z",
+    "details": {
+      "page": "/resources",
+      "duration": 180,
+      "referrer": "email"
+    },
+    "source": "website_analytics"
+  },
+  {
+    "Id": 16,
+    "contactId": 8,
+    "type": "form_submission",
+    "timestamp": "2024-01-08T11:30:00Z",
+    "details": {
+      "formName": "Newsletter Signup",
+      "formFields": ["email", "preferences"]
+    },
+    "source": "website_forms"
+  },
+  {
+    "Id": 17,
+    "contactId": 1,
+    "type": "website_visit",
+    "timestamp": "2024-01-14T16:45:00Z",
+    "details": {
+      "page": "/case-studies",
+      "duration": 360,
+      "referrer": "direct"
+    },
+    "source": "website_analytics"
+  },
+  {
+    "Id": 18,
+    "contactId": 2,
+    "type": "email_open",
+    "timestamp": "2024-01-12T08:20:00Z",
+    "details": {
+      "emailSubject": "Your Demo is Ready",
+      "campaignId": "camp_007"
+    },
+    "source": "email_system"
+  },
+  {
+    "Id": 19,
+    "contactId": 3,
+    "type": "website_visit",
+    "timestamp": "2024-01-11T13:25:00Z",
+    "details": {
+      "page": "/integrations",
+      "duration": 200,
+      "referrer": "organic"
+    },
+    "source": "website_analytics"
+  },
+  {
+    "Id": 20,
+    "contactId": 4,
+    "type": "email_open",
+    "timestamp": "2024-01-10T17:15:00Z",
+    "details": {
+      "emailSubject": "Security Features Overview",
+      "campaignId": "camp_008"
+    },
+    "source": "email_system"
+  }
+]

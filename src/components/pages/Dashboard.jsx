@@ -1,27 +1,32 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
+import { leadScoringService } from "@/services/api/leadScoringService";
+import { format, isThisWeek, isToday } from "date-fns";
 import ApperIcon from "@/components/ApperIcon";
-import Button from "@/components/atoms/Button";
-import Card from "@/components/atoms/Card";
-import MetricCard from "@/components/molecules/MetricCard";
-import TaskItem from "@/components/molecules/TaskItem";
-import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
-import { dealService } from "@/services/api/dealService";
-import { contactService } from "@/services/api/contactService";
+import Loading from "@/components/ui/Loading";
+import Contacts from "@/components/pages/Contacts";
+import Deals from "@/components/pages/Deals";
+import TaskItem from "@/components/molecules/TaskItem";
+import MetricCard from "@/components/molecules/MetricCard";
+import Card from "@/components/atoms/Card";
+import Button from "@/components/atoms/Button";
 import { taskService } from "@/services/api/taskService";
+import { dealService } from "@/services/api/dealService";
 import { activityService } from "@/services/api/activityService";
-import { format, isToday, isThisWeek } from "date-fns";
+import { contactService } from "@/services/api/contactService";
 
 const Dashboard = () => {
   const [deals, setDeals] = useState([]);
   const [contacts, setContacts] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [activities, setActivities] = useState([]);
+  const [prioritizedLeads, setPrioritizedLeads] = useState([]);
+  const [leadScoreDistribution, setLeadScoreDistribution] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  
   useEffect(() => {
     loadDashboardData();
   }, []);
@@ -31,17 +36,21 @@ const Dashboard = () => {
       setLoading(true);
       setError(null);
       
-      const [dealsData, contactsData, tasksData, activitiesData] = await Promise.all([
+      const [dealsData, contactsData, tasksData, activitiesData, prioritizedLeadsData, scoreDistribution] = await Promise.all([
         dealService.getAll(),
         contactService.getAll(),
         taskService.getAll(),
-        activityService.getAll()
+        activityService.getAll(),
+        leadScoringService.getTopPerformingLeads(10),
+        leadScoringService.getLeadScoreDistribution()
       ]);
       
       setDeals(dealsData);
       setContacts(contactsData);
       setTasks(tasksData);
       setActivities(activitiesData);
+      setPrioritizedLeads(prioritizedLeadsData);
+      setLeadScoreDistribution(scoreDistribution);
     } catch (err) {
       setError(err.message);
       toast.error("Failed to load dashboard data");
@@ -54,7 +63,7 @@ const Dashboard = () => {
     return contacts.find(contact => contact.Id === contactId);
   };
 
-  const calculateMetrics = () => {
+const calculateMetrics = () => {
     const totalPipelineValue = deals.reduce((total, deal) => total + deal.value, 0);
     const closedDeals = deals.filter(deal => deal.stage === "Closed");
     const closedValue = closedDeals.reduce((total, deal) => total + deal.value, 0);
@@ -68,7 +77,9 @@ const Dashboard = () => {
       avgDealValue,
       totalDeals: deals.length,
       totalContacts: contacts.length,
-      activeTasks: tasks.filter(task => !task.completed).length
+      activeTasks: tasks.filter(task => !task.completed).length,
+      hotLeads: leadScoreDistribution.hot || 0,
+      avgLeadScore: leadScoreDistribution.averageScore || 0
     };
   };
 
@@ -137,9 +148,10 @@ const Dashboard = () => {
 
   const metrics = calculateMetrics();
   const upcomingTasks = getUpcomingTasks();
-  const recentActivities = getRecentActivities();
+const recentActivities = getRecentActivities();
   const todaysTasks = getTodaysTasks();
-
+  const topLeads = prioritizedLeads.slice(0, 5);
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -157,8 +169,8 @@ const Dashboard = () => {
         </Button>
       </div>
 
-      {/* Metrics Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+{/* Metrics Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
         <MetricCard
           title="Total Pipeline Value"
           value={formatCurrency(metrics.totalPipelineValue)}
@@ -168,12 +180,22 @@ const Dashboard = () => {
           gradient="from-primary-500 to-primary-600"
         />
         <MetricCard
-          title="Closed Deals"
-          value={formatCurrency(metrics.closedValue)}
-          icon="TrendingUp"
+          title="Hot Leads"
+          value={metrics.hotLeads}
+          icon="Flame"
+          trend={15}
+          trendLabel="vs last week"
+          gradient="from-red-500 to-red-600"
+          temperature="hot"
+        />
+        <MetricCard
+          title="Avg Lead Score"
+          value={Math.round(metrics.avgLeadScore)}
+          icon="Award"
           trend={8}
           trendLabel="vs last month"
-          gradient="from-accent-500 to-accent-600"
+          gradient="from-amber-500 to-amber-600"
+          isScore={true}
         />
         <MetricCard
           title="Conversion Rate"
@@ -192,7 +214,6 @@ const Dashboard = () => {
           gradient="from-yellow-500 to-yellow-600"
         />
       </div>
-
       {/* Pipeline Overview */}
       <Card className="p-6">
         <div className="flex items-center justify-between mb-6">
@@ -225,7 +246,55 @@ const Dashboard = () => {
         </div>
       </Card>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Priority Leads */}
+        <Card className="p-6">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-semibold text-surface-900">Priority Leads</h2>
+            <div className="flex items-center space-x-2">
+              <span className="text-sm text-surface-600">{topLeads.length} leads</span>
+              <Button variant="outline" size="sm">
+                <ApperIcon name="Users" className="w-4 h-4" />
+              </Button>
+            </div>
+          </div>
+          
+          <div className="space-y-3">
+            {topLeads.length > 0 ? (
+              topLeads.map((lead) => (
+                <div key={lead.Id} className="flex items-center justify-between p-3 bg-surface-50 rounded-lg">
+                  <div className="flex items-center space-x-3">
+                    <div className={`w-3 h-3 rounded-full ${
+                      lead.temperature === 'hot' ? 'bg-red-500' :
+                      lead.temperature === 'warm' ? 'bg-amber-500' : 'bg-blue-500'
+                    }`}></div>
+                    <div>
+                      <p className="font-medium text-surface-900">{lead.name}</p>
+                      <p className="text-sm text-surface-600">{lead.company}</p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="flex items-center space-x-2">
+                      <span className="text-sm font-bold text-surface-900">{lead.score}</span>
+                      <div className={`px-2 py-1 rounded-full text-xs font-medium ${
+                        lead.temperature === 'hot' ? 'bg-red-100 text-red-800' :
+                        lead.temperature === 'warm' ? 'bg-amber-100 text-amber-800' : 'bg-blue-100 text-blue-800'
+                      }`}>
+                        {lead.temperature}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="text-center py-8 text-surface-500">
+                <ApperIcon name="Users" className="w-8 h-8 mx-auto mb-2 opacity-50" />
+                <p className="text-sm">No priority leads available</p>
+              </div>
+            )}
+          </div>
+        </Card>
+
         {/* Today's Tasks */}
         <Card className="p-6">
           <div className="flex items-center justify-between mb-4">
@@ -300,8 +369,8 @@ const Dashboard = () => {
             )}
           </div>
         </Card>
-      </div>
-
+</div>
+      
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card className="p-6 text-center">

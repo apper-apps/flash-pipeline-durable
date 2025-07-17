@@ -52,7 +52,40 @@ export const contactService = {
     if (index === -1) {
       throw new Error(`Contact with ID ${id} not found`);
     }
-    contacts.splice(index, 1);
+contacts.splice(index, 1);
     return true;
+  },
+
+  async getContactsWithScoring() {
+    await delay(350);
+    return contacts.map(contact => ({ ...contact }));
+  },
+
+  async updateContactScore(id, score, temperature) {
+    await delay(200);
+    const index = contacts.findIndex(c => c.Id === id);
+    if (index === -1) {
+      throw new Error(`Contact with ID ${id} not found`);
+    }
+    
+    const updatedContact = {
+      ...contacts[index],
+      leadScore: score,
+      temperature: temperature,
+      lastScoreUpdate: new Date().toISOString()
+    };
+    
+    contacts[index] = updatedContact;
+    return { ...updatedContact };
+  },
+
+  async getContactsByTemperature(temperature) {
+    await delay(300);
+    return contacts.filter(c => c.temperature === temperature).map(contact => ({ ...contact }));
+  },
+
+  async getHighPriorityContacts(minScore = 70) {
+    await delay(250);
+    return contacts.filter(c => (c.leadScore || 0) >= minScore).map(contact => ({ ...contact }));
   }
 };

@@ -1,5 +1,4 @@
 import dealsData from "@/services/mockData/deals.json";
-
 let deals = [...dealsData];
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -49,9 +48,29 @@ export const dealService = {
     await delay(300);
     const index = deals.findIndex(d => d.Id === id);
     if (index === -1) {
-      throw new Error(`Deal with ID ${id} not found`);
+throw new Error(`Deal with ID ${id} not found`);
     }
     deals.splice(index, 1);
     return true;
+  },
+  async getDealsForLeadScoring(contactId) {
+    await delay(200);
+    const contactDeals = deals.filter(d => d.contactId === contactId);
+    return contactDeals.map(deal => ({ ...deal }));
+  },
+
+  async calculateDealSizePotential(contactId) {
+    await delay(200);
+    const contactDeals = deals.filter(d => d.contactId === contactId);
+    
+    if (contactDeals.length === 0) {
+      return { avgDealSize: 25000, potentialValue: 25000 }; // Default values
+    }
+    
+    const avgDealSize = contactDeals.reduce((sum, deal) => sum + deal.value, 0) / contactDeals.length;
+    const maxDealSize = Math.max(...contactDeals.map(d => d.value));
+const potentialValue = avgDealSize * 1.2; // 20% growth potential
+    
+    return { avgDealSize, maxDealSize, potentialValue };
   }
 };
