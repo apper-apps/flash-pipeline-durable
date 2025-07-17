@@ -1,0 +1,102 @@
+[
+  {
+    "Id": 1,
+    "title": "Enterprise Software License",
+    "value": 75000,
+    "stage": "Proposal",
+    "contactId": 1,
+    "probability": 70,
+    "expectedClose": "2024-02-15T00:00:00Z",
+    "createdAt": "2024-01-01T10:00:00Z"
+  },
+  {
+    "Id": 2,
+    "title": "Cloud Migration Project",
+    "value": 120000,
+    "stage": "Negotiation",
+    "contactId": 2,
+    "probability": 85,
+    "expectedClose": "2024-02-28T00:00:00Z",
+    "createdAt": "2024-01-02T11:00:00Z"
+  },
+  {
+    "Id": 3,
+    "title": "Marketing Automation Setup",
+    "value": 45000,
+    "stage": "Qualified",
+    "contactId": 3,
+    "probability": 60,
+    "expectedClose": "2024-03-15T00:00:00Z",
+    "createdAt": "2024-01-03T12:00:00Z"
+  },
+  {
+    "Id": 4,
+    "title": "Security Audit & Compliance",
+    "value": 65000,
+    "stage": "Closed",
+    "contactId": 4,
+    "probability": 100,
+    "expectedClose": "2024-01-30T00:00:00Z",
+    "createdAt": "2024-01-04T13:00:00Z"
+  },
+  {
+    "Id": 5,
+    "title": "Custom Development Package",
+    "value": 95000,
+    "stage": "Proposal",
+    "contactId": 5,
+    "probability": 75,
+    "expectedClose": "2024-03-01T00:00:00Z",
+    "createdAt": "2024-01-05T14:00:00Z"
+  },
+  {
+    "Id": 6,
+    "title": "Digital Transformation Consulting",
+    "value": 150000,
+    "stage": "Lead",
+    "contactId": 6,
+    "probability": 25,
+    "expectedClose": "2024-04-15T00:00:00Z",
+    "createdAt": "2024-01-06T15:00:00Z"
+  },
+  {
+    "Id": 7,
+    "title": "Mobile App Development",
+    "value": 80000,
+    "stage": "Qualified",
+    "contactId": 7,
+    "probability": 55,
+    "expectedClose": "2024-03-30T00:00:00Z",
+    "createdAt": "2024-01-07T16:00:00Z"
+  },
+  {
+    "Id": 8,
+    "title": "Data Analytics Platform",
+    "value": 110000,
+    "stage": "Negotiation",
+    "contactId": 8,
+    "probability": 80,
+    "expectedClose": "2024-02-20T00:00:00Z",
+    "createdAt": "2024-01-08T17:00:00Z"
+  },
+  {
+    "Id": 9,
+    "title": "Training & Support Package",
+    "value": 35000,
+    "stage": "Closed",
+    "contactId": 1,
+    "probability": 100,
+    "expectedClose": "2024-01-25T00:00:00Z",
+    "createdAt": "2024-01-09T18:00:00Z"
+  },
+  {
+    "Id": 10,
+    "title": "Infrastructure Upgrade",
+    "value": 200000,
+    "stage": "Lead",
+    "contactId": 2,
+    "probability": 30,
+    "expectedClose": "2024-05-01T00:00:00Z",
+    "createdAt": "2024-01-10T19:00:00Z"
+  }
+]

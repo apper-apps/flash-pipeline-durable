@@ -1,0 +1,82 @@
+[
+  {
+    "Id": 1,
+    "name": "John Smith",
+    "email": "john.smith@acmecorp.com",
+    "phone": "+1-555-0123",
+    "company": "Acme Corporation",
+    "position": "Sales Director",
+    "lastContact": "2024-01-15T09:30:00Z",
+    "createdAt": "2024-01-01T10:00:00Z"
+  },
+  {
+    "Id": 2,
+    "name": "Sarah Johnson",
+    "email": "sarah.johnson@techstart.io",
+    "phone": "+1-555-0124",
+    "company": "TechStart Solutions",
+    "position": "CEO",
+    "lastContact": "2024-01-14T14:20:00Z",
+    "createdAt": "2024-01-02T11:00:00Z"
+  },
+  {
+    "Id": 3,
+    "name": "Michael Chen",
+    "email": "m.chen@innovate.co",
+    "phone": "+1-555-0125",
+    "company": "Innovate Co",
+    "position": "Product Manager",
+    "lastContact": "2024-01-13T16:45:00Z",
+    "createdAt": "2024-01-03T12:00:00Z"
+  },
+  {
+    "Id": 4,
+    "name": "Emily Rodriguez",
+    "email": "emily.r@globaltech.com",
+    "phone": "+1-555-0126",
+    "company": "GlobalTech Inc",
+    "position": "VP of Operations",
+    "lastContact": "2024-01-12T11:15:00Z",
+    "createdAt": "2024-01-04T13:00:00Z"
+  },
+  {
+    "Id": 5,
+    "name": "David Wilson",
+    "email": "david.wilson@futureware.net",
+    "phone": "+1-555-0127",
+    "company": "FutureWare Systems",
+    "position": "CTO",
+    "lastContact": "2024-01-11T15:30:00Z",
+    "createdAt": "2024-01-05T14:00:00Z"
+  },
+  {
+    "Id": 6,
+    "name": "Lisa Thompson",
+    "email": "lisa.thompson@nexus.com",
+    "phone": "+1-555-0128",
+    "company": "Nexus Enterprises",
+    "position": "Marketing Director",
+    "lastContact": "2024-01-10T13:45:00Z",
+    "createdAt": "2024-01-06T15:00:00Z"
+  },
+  {
+    "Id": 7,
+    "name": "Robert Martinez",
+    "email": "robert.martinez@pinnacle.org",
+    "phone": "+1-555-0129",
+    "company": "Pinnacle Solutions",
+    "position": "Business Development",
+    "lastContact": "2024-01-09T10:20:00Z",
+    "createdAt": "2024-01-07T16:00:00Z"
+  },
+  {
+    "Id": 8,
+    "name": "Amanda White",
+    "email": "amanda.white@vertex.io",
+    "phone": "+1-555-0130",
+    "company": "Vertex Technologies",
+    "position": "Operations Manager",
+    "lastContact": "2024-01-08T12:10:00Z",
+    "createdAt": "2024-01-08T17:00:00Z"
+  }
+]

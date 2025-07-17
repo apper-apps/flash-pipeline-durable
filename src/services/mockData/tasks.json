@@ -1,0 +1,112 @@
+[
+  {
+    "Id": 1,
+    "title": "Follow up on Enterprise Software proposal",
+    "type": "call",
+    "dueDate": "2024-01-20T10:00:00Z",
+    "contactId": 1,
+    "dealId": 1,
+    "completed": false,
+    "notes": "Discuss pricing and implementation timeline",
+    "createdAt": "2024-01-15T09:00:00Z"
+  },
+  {
+    "Id": 2,
+    "title": "Send Cloud Migration contract",
+    "type": "email",
+    "dueDate": "2024-01-18T14:00:00Z",
+    "contactId": 2,
+    "dealId": 2,
+    "completed": true,
+    "notes": "Include updated terms and conditions",
+    "createdAt": "2024-01-16T10:00:00Z"
+  },
+  {
+    "Id": 3,
+    "title": "Schedule demo for Marketing Automation",
+    "type": "meeting",
+    "dueDate": "2024-01-22T11:00:00Z",
+    "contactId": 3,
+    "dealId": 3,
+    "completed": false,
+    "notes": "Prepare demo environment and presentation",
+    "createdAt": "2024-01-17T11:00:00Z"
+  },
+  {
+    "Id": 4,
+    "title": "Complete Security Audit deliverables",
+    "type": "task",
+    "dueDate": "2024-01-19T16:00:00Z",
+    "contactId": 4,
+    "dealId": 4,
+    "completed": true,
+    "notes": "Final report and recommendations",
+    "createdAt": "2024-01-18T12:00:00Z"
+  },
+  {
+    "Id": 5,
+    "title": "Review Custom Development requirements",
+    "type": "follow-up",
+    "dueDate": "2024-01-21T13:00:00Z",
+    "contactId": 5,
+    "dealId": 5,
+    "completed": false,
+    "notes": "Clarify technical specifications",
+    "createdAt": "2024-01-19T13:00:00Z"
+  },
+  {
+    "Id": 6,
+    "title": "Call Lisa about Digital Transformation project",
+    "type": "call",
+    "dueDate": "2024-01-24T15:00:00Z",
+    "contactId": 6,
+    "dealId": 6,
+    "completed": false,
+    "notes": "Discuss budget and timeline expectations",
+    "createdAt": "2024-01-20T14:00:00Z"
+  },
+  {
+    "Id": 7,
+    "title": "Send Mobile App wireframes",
+    "type": "email",
+    "dueDate": "2024-01-23T12:00:00Z",
+    "contactId": 7,
+    "dealId": 7,
+    "completed": false,
+    "notes": "Include revised UI/UX designs",
+    "createdAt": "2024-01-21T15:00:00Z"
+  },
+  {
+    "Id": 8,
+    "title": "Data Analytics Platform final negotiation",
+    "type": "meeting",
+    "dueDate": "2024-01-25T14:00:00Z",
+    "contactId": 8,
+    "dealId": 8,
+    "completed": false,
+    "notes": "Finalize pricing and contract terms",
+    "createdAt": "2024-01-22T16:00:00Z"
+  },
+  {
+    "Id": 9,
+    "title": "Prepare training materials",
+    "type": "task",
+    "dueDate": "2024-01-17T10:00:00Z",
+    "contactId": 1,
+    "dealId": 9,
+    "completed": true,
+    "notes": "Create user guides and documentation",
+    "createdAt": "2024-01-23T17:00:00Z"
+  },
+  {
+    "Id": 10,
+    "title": "Infrastructure assessment call",
+    "type": "call",
+    "dueDate": "2024-01-26T11:00:00Z",
+    "contactId": 2,
+    "dealId": 10,
+    "completed": false,
+    "notes": "Review current infrastructure and requirements",
+    "createdAt": "2024-01-24T18:00:00Z"
+  }
+]

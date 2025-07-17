@@ -1,0 +1,92 @@
+[
+  {
+    "Id": 1,
+    "type": "call",
+    "contactId": 1,
+    "dealId": 1,
+    "notes": "Discussed project timeline and budget requirements",
+    "outcome": "Positive response, moving to proposal stage",
+    "timestamp": "2024-01-15T09:30:00Z"
+  },
+  {
+    "Id": 2,
+    "type": "email",
+    "contactId": 2,
+    "dealId": 2,
+    "notes": "Sent detailed proposal with pricing breakdown",
+    "outcome": "Proposal delivered, awaiting feedback",
+    "timestamp": "2024-01-14T14:20:00Z"
+  },
+  {
+    "Id": 3,
+    "type": "meeting",
+    "contactId": 3,
+    "dealId": 3,
+    "notes": "Product demo and Q&A session",
+    "outcome": "Strong interest shown, requested technical specs",
+    "timestamp": "2024-01-13T16:45:00Z"
+  },
+  {
+    "Id": 4,
+    "type": "call",
+    "contactId": 4,
+    "dealId": 4,
+    "notes": "Final review of security audit results",
+    "outcome": "Approved deliverables, deal closed",
+    "timestamp": "2024-01-12T11:15:00Z"
+  },
+  {
+    "Id": 5,
+    "type": "email",
+    "contactId": 5,
+    "dealId": 5,
+    "notes": "Clarified custom development requirements",
+    "outcome": "Requirements documented, proposal updated",
+    "timestamp": "2024-01-11T15:30:00Z"
+  },
+  {
+    "Id": 6,
+    "type": "meeting",
+    "contactId": 6,
+    "dealId": 6,
+    "notes": "Initial consultation on digital transformation",
+    "outcome": "Identified key pain points and opportunities",
+    "timestamp": "2024-01-10T13:45:00Z"
+  },
+  {
+    "Id": 7,
+    "type": "call",
+    "contactId": 7,
+    "dealId": 7,
+    "notes": "Discussed mobile app feature requirements",
+    "outcome": "Refined scope, preparing wireframes",
+    "timestamp": "2024-01-09T10:20:00Z"
+  },
+  {
+    "Id": 8,
+    "type": "email",
+    "contactId": 8,
+    "dealId": 8,
+    "notes": "Sent data analytics platform demo link",
+    "outcome": "Demo scheduled for next week",
+    "timestamp": "2024-01-08T12:10:00Z"
+  },
+  {
+    "Id": 9,
+    "type": "meeting",
+    "contactId": 1,
+    "dealId": 9,
+    "notes": "Training session kickoff meeting",
+    "outcome": "Training schedule finalized",
+    "timestamp": "2024-01-07T09:00:00Z"
+  },
+  {
+    "Id": 10,
+    "type": "call",
+    "contactId": 2,
+    "dealId": 10,
+    "notes": "Infrastructure assessment discussion",
+    "outcome": "Scope defined, waiting for budget approval",
+    "timestamp": "2024-01-06T14:30:00Z"
+  }
+]
