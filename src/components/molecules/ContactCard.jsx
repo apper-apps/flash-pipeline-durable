@@ -39,9 +39,10 @@ const ContactCard = ({ contact, onEdit, onDelete, onCall, onEmail }) => {
             >
               <ApperIcon name="Phone" className="w-4 h-4" />
             </button>
-            <button
+<button
               onClick={() => onEmail(contact)}
               className="p-2 text-surface-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors"
+              title="Open Email Client"
             >
               <ApperIcon name="Mail" className="w-4 h-4" />
             </button>

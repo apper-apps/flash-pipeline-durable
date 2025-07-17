@@ -7,6 +7,7 @@ import Card from "@/components/atoms/Card";
 import SearchBar from "@/components/molecules/SearchBar";
 import ContactCard from "@/components/molecules/ContactCard";
 import ContactForm from "@/components/organisms/ContactForm";
+import EmailClient from "@/components/organisms/EmailClient";
 import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
 import Empty from "@/components/ui/Empty";
@@ -17,10 +18,12 @@ const Contacts = () => {
   const [filteredContacts, setFilteredContacts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
+const [searchTerm, setSearchTerm] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [selectedContact, setSelectedContact] = useState(null);
   const [viewMode, setViewMode] = useState("grid");
+  const [showEmailClient, setShowEmailClient] = useState(false);
+  const [emailContact, setEmailContact] = useState(null);
 
   useEffect(() => {
     loadContacts();
@@ -98,8 +101,9 @@ const Contacts = () => {
     toast.info(`Calling ${contact.name} at ${contact.phone}`);
   };
 
-  const handleEmail = (contact) => {
-    toast.info(`Opening email to ${contact.email}`);
+const handleEmail = (contact) => {
+    setEmailContact(contact);
+    setShowEmailClient(true);
   };
 
   if (loading) {
@@ -193,12 +197,18 @@ const Contacts = () => {
         </div>
       </Card>
 
-      <ContactForm
+<ContactForm
         isOpen={showForm}
         onClose={() => setShowForm(false)}
         onSave={handleSaveContact}
         contact={selectedContact}
         title={selectedContact ? "Edit Contact" : "Add Contact"}
+      />
+
+      <EmailClient
+        isOpen={showEmailClient}
+        onClose={() => setShowEmailClient(false)}
+        contact={emailContact}
       />
     </motion.div>
   );

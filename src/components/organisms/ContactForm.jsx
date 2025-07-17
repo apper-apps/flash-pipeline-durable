@@ -19,6 +19,10 @@ const [formData, setFormData] = useState({
     phone: "",
     company: "",
     position: "",
+    emailPreferences: {
+      allowEmails: true,
+      emailFormat: "html"
+    },
     customFields: {}
   });
 
@@ -33,22 +37,30 @@ useEffect(() => {
   }, [isOpen]);
 
   useEffect(() => {
-    if (contact) {
+if (contact) {
       setFormData({
         name: contact.name || "",
         email: contact.email || "",
         phone: contact.phone || "",
         company: contact.company || "",
         position: contact.position || "",
+        emailPreferences: contact.emailPreferences || {
+          allowEmails: true,
+          emailFormat: "html"
+        },
         customFields: contact.customFields || {}
       });
-    } else {
+} else {
       setFormData({
         name: "",
         email: "",
         phone: "",
         company: "",
         position: "",
+        emailPreferences: {
+          allowEmails: true,
+          emailFormat: "html"
+        },
         customFields: {}
       });
     }
@@ -205,6 +217,51 @@ const handleChange = (field, value) => {
           error={errors.position}
           placeholder="Enter job title"
 />
+        
+        {/* Email Preferences */}
+        <div className="border-t border-surface-200 pt-4">
+          <h3 className="text-sm font-medium text-surface-900 mb-3">Email Preferences</h3>
+          <div className="space-y-3">
+            <div className="flex items-center space-x-3">
+              <input
+                type="checkbox"
+                id="allowEmails"
+                checked={formData.emailPreferences.allowEmails}
+                onChange={(e) => setFormData(prev => ({
+                  ...prev,
+                  emailPreferences: {
+                    ...prev.emailPreferences,
+                    allowEmails: e.target.checked
+                  }
+                }))}
+                className="h-4 w-4 rounded border-surface-300 text-primary-600 focus:ring-primary-500"
+              />
+              <label htmlFor="allowEmails" className="text-sm text-surface-700">
+                Allow email communications
+              </label>
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-surface-700 mb-2">
+                Email Format
+              </label>
+              <select
+                value={formData.emailPreferences.emailFormat}
+                onChange={(e) => setFormData(prev => ({
+                  ...prev,
+                  emailPreferences: {
+                    ...prev.emailPreferences,
+                    emailFormat: e.target.value
+                  }
+                }))}
+                className="flex h-10 w-full rounded-lg border border-surface-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              >
+                <option value="html">HTML</option>
+                <option value="text">Plain Text</option>
+              </select>
+            </div>
+          </div>
+        </div>
         
         {/* Custom Fields */}
         {customFields.map(field => {

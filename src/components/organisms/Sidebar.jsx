@@ -9,6 +9,7 @@ const navigationItems = [
     { to: "/contacts", icon: "Users", label: "Contacts" },
     { to: "/deals", icon: "Target", label: "Deals" },
     { to: "/tasks", icon: "CheckSquare", label: "Tasks" },
+    { to: "/emails", icon: "Mail", label: "Email Client" },
     { to: "/reports", icon: "TrendingUp", label: "Reports" },
     { to: "/settings", icon: "Settings", label: "Settings" }
   ];

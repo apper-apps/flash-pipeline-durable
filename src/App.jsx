@@ -5,6 +5,7 @@ import Dashboard from "@/components/pages/Dashboard";
 import Contacts from "@/components/pages/Contacts";
 import Deals from "@/components/pages/Deals";
 import Tasks from "@/components/pages/Tasks";
+import EmailClientPage from "@/components/pages/EmailClient";
 import Reports from "@/components/pages/Reports";
 import CustomFieldConfiguration from "@/components/pages/CustomFieldConfiguration";
 
@@ -14,9 +15,10 @@ function App() {
 <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
-          <Route path="contacts" element={<Contacts />} />
+<Route path="contacts" element={<Contacts />} />
           <Route path="deals" element={<Deals />} />
           <Route path="tasks" element={<Tasks />} />
+          <Route path="emails" element={<EmailClientPage />} />
           <Route path="reports" element={<Reports />} />
           <Route path="settings" element={<CustomFieldConfiguration />} />
         </Route>
