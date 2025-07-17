@@ -12,13 +12,32 @@ const FormField = ({
   className,
   ...props 
 }) => {
-  const renderInput = () => {
+const renderInput = () => {
     if (children) {
       return children;
     }
     
     if (type === "select") {
       return <Select {...props} />;
+    }
+    
+    if (type === "textarea") {
+      return (
+        <textarea
+          {...props}
+          className="flex min-h-[80px] w-full rounded-lg border border-surface-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-y"
+        />
+      );
+    }
+    
+    if (type === "checkbox") {
+      return (
+        <input
+          type="checkbox"
+          {...props}
+          className="h-4 w-4 rounded border-surface-300 text-primary-600 focus:ring-primary-500"
+        />
+      );
     }
     
     return <Input type={type} {...props} />;

@@ -4,18 +4,20 @@ import NavItem from "@/components/molecules/NavItem";
 import Button from "@/components/atoms/Button";
 
 const Sidebar = ({ isOpen, onClose }) => {
-  const navigationItems = [
+const navigationItems = [
     { to: "/", icon: "BarChart3", label: "Dashboard" },
     { to: "/contacts", icon: "Users", label: "Contacts" },
     { to: "/deals", icon: "Target", label: "Deals" },
     { to: "/tasks", icon: "CheckSquare", label: "Tasks" },
-    { to: "/reports", icon: "TrendingUp", label: "Reports" }
+    { to: "/reports", icon: "TrendingUp", label: "Reports" },
+    { to: "/settings", icon: "Settings", label: "Settings" }
   ];
 
-  const quickActions = [
+const quickActions = [
     { icon: "UserPlus", label: "Add Contact", action: "contact" },
     { icon: "Plus", label: "New Deal", action: "deal" },
-    { icon: "Calendar", label: "Schedule Task", action: "task" }
+    { icon: "Calendar", label: "Schedule Task", action: "task" },
+    { icon: "Sliders", label: "Custom Fields", action: "fields" }
   ];
 
   return (

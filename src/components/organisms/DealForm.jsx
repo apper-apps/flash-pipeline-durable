@@ -5,6 +5,7 @@ import FormField from "@/components/molecules/FormField";
 import Modal from "@/components/molecules/Modal";
 import ApperIcon from "@/components/ApperIcon";
 import { contactService } from "@/services/api/contactService";
+import { customFieldService } from "@/services/api/customFieldService";
 
 const DealForm = ({ 
   isOpen, 
@@ -13,18 +14,20 @@ const DealForm = ({
   deal = null,
   title = "Add Deal" 
 }) => {
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     title: "",
     value: "",
     stage: "Lead",
     contactId: "",
     probability: 25,
-    expectedClose: ""
+    expectedClose: "",
+    customFields: {}
   });
 
-  const [contacts, setContacts] = useState([]);
+const [contacts, setContacts] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
+  const [customFields, setCustomFields] = useState([]);
 
   const stages = [
     { value: "Lead", label: "Lead" },
@@ -34,13 +37,14 @@ const DealForm = ({
     { value: "Closed", label: "Closed" }
   ];
 
-  useEffect(() => {
+useEffect(() => {
     if (isOpen) {
       loadContacts();
+      loadCustomFields();
     }
   }, [isOpen]);
 
-  useEffect(() => {
+useEffect(() => {
     if (deal) {
       setFormData({
         title: deal.title || "",
@@ -48,7 +52,8 @@ const DealForm = ({
         stage: deal.stage || "Lead",
         contactId: deal.contactId || "",
         probability: deal.probability || 25,
-        expectedClose: deal.expectedClose ? new Date(deal.expectedClose).toISOString().split('T')[0] : ""
+        expectedClose: deal.expectedClose ? new Date(deal.expectedClose).toISOString().split('T')[0] : "",
+        customFields: deal.customFields || {}
       });
     } else {
       setFormData({
@@ -57,13 +62,14 @@ const DealForm = ({
         stage: "Lead",
         contactId: "",
         probability: 25,
-        expectedClose: ""
+        expectedClose: "",
+        customFields: {}
       });
     }
     setErrors({});
   }, [deal, isOpen]);
 
-  const loadContacts = async () => {
+const loadContacts = async () => {
     try {
       const contactsData = await contactService.getAll();
       setContacts(contactsData);
@@ -72,7 +78,17 @@ const DealForm = ({
     }
   };
 
-  const validateForm = () => {
+  const loadCustomFields = async () => {
+    try {
+      const allFields = await customFieldService.getAll();
+      const dealFields = allFields.filter(field => field.entity === 'deal');
+      setCustomFields(dealFields);
+    } catch (error) {
+      toast.error("Failed to load custom fields");
+    }
+  };
+
+const validateForm = () => {
     const newErrors = {};
     
     if (!formData.title.trim()) {
@@ -86,6 +102,16 @@ const DealForm = ({
     if (!formData.contactId) {
       newErrors.contactId = "Please select a contact";
     }
+
+    // Validate custom fields
+    customFields.forEach(field => {
+      if (field.required) {
+        const value = formData.customFields[field.name];
+        if (!value || (typeof value === 'string' && !value.trim())) {
+          newErrors[`custom_${field.name}`] = `${field.label} is required`;
+        }
+      }
+    });
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -118,7 +144,7 @@ const DealForm = ({
     }
   };
 
-  const handleChange = (field, value) => {
+const handleChange = (field, value) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
@@ -128,6 +154,24 @@ const DealForm = ({
       setErrors(prev => ({
         ...prev,
         [field]: ""
+      }));
+    }
+  };
+
+  const handleCustomFieldChange = (fieldName, value) => {
+    setFormData(prev => ({
+      ...prev,
+      customFields: {
+        ...prev.customFields,
+        [fieldName]: value
+      }
+    }));
+    
+    const errorKey = `custom_${fieldName}`;
+    if (errors[errorKey]) {
+      setErrors(prev => ({
+        ...prev,
+        [errorKey]: ""
       }));
     }
   };
@@ -212,8 +256,69 @@ const DealForm = ({
           type="date"
           value={formData.expectedClose}
           onChange={(e) => handleChange("expectedClose", e.target.value)}
-        />
+/>
         
+        {/* Custom Fields */}
+        {customFields.map(field => {
+          const value = formData.customFields[field.name] || '';
+          const errorKey = `custom_${field.name}`;
+          
+          if (field.type === 'select') {
+            return (
+              <FormField
+                key={field.Id}
+                label={field.label}
+                required={field.required}
+                error={errors[errorKey]}
+              >
+                <select
+                  value={value}
+                  onChange={(e) => handleCustomFieldChange(field.name, e.target.value)}
+                  className="flex h-10 w-full rounded-lg border border-surface-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                >
+                  <option value="">Select {field.label}</option>
+                  {field.options?.map(option => (
+                    <option key={option} value={option}>{option}</option>
+                  ))}
+                </select>
+              </FormField>
+            );
+          }
+          
+          if (field.type === 'boolean') {
+            return (
+              <FormField
+                key={field.Id}
+                label={field.label}
+                required={field.required}
+                error={errors[errorKey]}
+              >
+                <div className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    checked={value === true}
+                    onChange={(e) => handleCustomFieldChange(field.name, e.target.checked)}
+                    className="h-4 w-4 rounded border-surface-300 text-primary-600 focus:ring-primary-500"
+                  />
+                  <span className="text-sm text-surface-700">Yes</span>
+                </div>
+              </FormField>
+            );
+          }
+          
+          return (
+            <FormField
+              key={field.Id}
+              label={field.label}
+              type={field.type}
+              required={field.required}
+              value={value}
+              onChange={(e) => handleCustomFieldChange(field.name, e.target.value)}
+              error={errors[errorKey]}
+              placeholder={`Enter ${field.label.toLowerCase()}`}
+            />
+          );
+        })}
         <div className="flex justify-end space-x-3 pt-4">
           <Button
             type="button"

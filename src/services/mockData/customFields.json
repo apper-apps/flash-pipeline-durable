@@ -1,0 +1,153 @@
+[
+  {
+    "Id": 1,
+    "name": "industry",
+    "label": "Industry",
+    "type": "select",
+    "entity": "contact",
+    "required": true,
+    "options": [
+      "Technology",
+      "Healthcare",
+      "Finance",
+      "Manufacturing",
+      "Retail",
+      "Education",
+      "Real Estate",
+      "Other"
+    ],
+    "order": 0,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 2,
+    "name": "customer_type",
+    "label": "Customer Type",
+    "type": "select",
+    "entity": "contact",
+    "required": false,
+    "options": [
+      "Enterprise",
+      "SMB",
+      "Startup",
+      "Government",
+      "Non-profit"
+    ],
+    "order": 1,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 3,
+    "name": "annual_revenue",
+    "label": "Annual Revenue",
+    "type": "number",
+    "entity": "contact",
+    "required": false,
+    "order": 2,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 4,
+    "name": "lead_source",
+    "label": "Lead Source",
+    "type": "select",
+    "entity": "deal",
+    "required": true,
+    "options": [
+      "Website",
+      "Social Media",
+      "Email Campaign",
+      "Referral",
+      "Cold Call",
+      "Trade Show",
+      "Other"
+    ],
+    "order": 0,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 5,
+    "name": "deal_category",
+    "label": "Deal Category",
+    "type": "select",
+    "entity": "deal",
+    "required": false,
+    "options": [
+      "New Business",
+      "Upsell",
+      "Cross-sell",
+      "Renewal",
+      "Expansion"
+    ],
+    "order": 1,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 6,
+    "name": "competitor",
+    "label": "Primary Competitor",
+    "type": "text",
+    "entity": "deal",
+    "required": false,
+    "order": 2,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 7,
+    "name": "decision_maker",
+    "label": "Decision Maker Identified",
+    "type": "boolean",
+    "entity": "deal",
+    "required": false,
+    "order": 3,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 8,
+    "name": "budget_confirmed",
+    "label": "Budget Confirmed",
+    "type": "boolean",
+    "entity": "deal",
+    "required": false,
+    "order": 4,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 9,
+    "name": "company_size",
+    "label": "Company Size",
+    "type": "select",
+    "entity": "contact",
+    "required": false,
+    "options": [
+      "1-10 employees",
+      "11-50 employees",
+      "51-200 employees",
+      "201-500 employees",
+      "501-1000 employees",
+      "1000+ employees"
+    ],
+    "order": 3,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 10,
+    "name": "pain_point",
+    "label": "Primary Pain Point",
+    "type": "textarea",
+    "entity": "deal",
+    "required": false,
+    "order": 5,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  }
+]
